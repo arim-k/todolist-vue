@@ -1,0 +1,44 @@
+<template>
+  <div class="todo-app">
+    <AddTask @addTask="addTask" />
+    <Task />
+  </div>
+</template>
+
+<script>
+import AddTask from './AddTask';
+import Task from './Task';
+
+export default {
+  components: {
+    AddTask,
+    Task
+  },
+
+  data () {
+    return {
+      tasks: [],
+    }
+  }, 
+
+  methods: {
+    addTask(data) {
+      this.tasks.push(data);
+      this.storeTask();
+    },
+
+    storeTask() {
+      const tasksToString = JSON.stringify(this.tasks);
+      localStorage.setItem('tasks', tasksToString)
+    }
+  },
+
+  created() {
+    this.tasks = localStorage.tasks ? JSON.parse(localStorage.tasks) : [];
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
