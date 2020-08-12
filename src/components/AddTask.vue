@@ -21,7 +21,7 @@ export default {
     // Input
   },
 
-  data () {
+  data() {
     return {
       item: [],
     }
@@ -36,6 +36,11 @@ export default {
       if (isEmpty) return false; 
 
       this.$emit('addTask', { id, item });
+      this.resetInput();
+    },
+
+    resetInput() {
+      this.item = '';
     }
   }
 }
