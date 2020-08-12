@@ -1,7 +1,13 @@
 <template>
   <div class="todo-app">
     <AddTask @addTask="addTask" />
-    <Task />
+    <ul>
+      <Task 
+        v-for="task in tasks"
+        :key="task.id"
+        :task="task"
+      />
+    </ul> 
   </div>
 </template>
 

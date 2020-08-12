@@ -1,12 +1,22 @@
 <template>
   <div>
-    Task
+    <li class="task">
+      <span>{{ task.item }}</span>
+      <Button>Delete</Button>
+      <Button>Update</Button>
+    </li>
   </div>  
 </template>
 
 <script>
-export default {
+import Button from './atoms/Button';
 
+export default {
+  props: {
+    task: {
+      type: Object
+    }
+  }
 }
 </script>
 
