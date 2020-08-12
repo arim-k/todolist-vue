@@ -6,6 +6,7 @@
         v-for="task in tasks"
         :key="task.id"
         :task="task"
+        @deleteTask="deleteTask"
       />
     </ul> 
   </div>
@@ -21,7 +22,7 @@ export default {
     Task
   },
 
-  data () {
+  data() {
     return {
       tasks: [],
     }
@@ -36,6 +37,12 @@ export default {
     storeTask() {
       const tasksToString = JSON.stringify(this.tasks);
       localStorage.setItem('tasks', tasksToString)
+    },
+
+    deleteTask(id) {
+      const targetIndex = this.tasks.findIndex(v => v.id === id);
+      this.tasks.splice(targetIndex, 1);
+      this.storeTask();
     }
   },
 

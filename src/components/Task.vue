@@ -2,8 +2,8 @@
   <div>
     <li class="task">
       <span>{{ task.item }}</span>
-      <Button>Delete</Button>
       <Button>Update</Button>
+      <Button @click="deleteTask">Delete</Button>
     </li>
   </div>  
 </template>
@@ -15,6 +15,13 @@ export default {
   props: {
     task: {
       type: Object
+    }
+  },
+
+  methods: {
+    deleteTask() {
+      const id = this.task.id;
+      this.$emit('deleteTask', id);
     }
   }
 }
