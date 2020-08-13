@@ -6,14 +6,14 @@
           {{ task.item }}
         </span>
       </template> 
-        <input 
-          v-else
-          type="text"
-          ref="item"
-          :value="task.item"
-          @blur="handleBlur"
-          @keydown.enter="updateTask"
-        /> 
+      <input 
+        v-else
+        type="text"
+        ref="item"
+        :value="task.item"
+        @blur="handleBlur"
+        @keydown.enter="updateTask"
+      /> 
       <Button @click="updateTask">Update</Button>
       <Button @click="deleteTask">Delete</Button>
     </div>
@@ -60,15 +60,15 @@ export default {
 
     updateTask(e) {
       const id = this.task.id;
-      const updateItem = e.target.value;
-      console.log(id, updateItem);
+      const item = e.target.value;
+      console.log(id, item);
       
-      if (updateItem.length <= 0) {
+      if (item.length <= 0) {
         return false;
       }
 
-      this.$emit('updateTask', { id, updateItem });
-      console.log(updateItem)
+      this.$emit('updateTask', { id, item });
+      console.log(item)
       this.isChanging = false;
     },
 

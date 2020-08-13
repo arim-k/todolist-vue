@@ -7,7 +7,7 @@
         :key="task.id"
         :task="task"
         @deleteTask="deleteTask"
-        @update="updateTask"
+        @updateTask="updateTask"
       />
     </ul>
   </div>
@@ -53,6 +53,7 @@ export default {
       const targetTask = this.tasks[targetIndex];
       console.log('targetTask', targetTask);
       this.tasks.splice(targetIndex, 1, { ...targetTask, item });
+
       this.storeTask();
     }
   },
