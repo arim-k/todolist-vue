@@ -7,8 +7,9 @@
         :key="task.id"
         :task="task"
         @deleteTask="deleteTask"
+        @update="updateTask"
       />
-    </ul> 
+    </ul>
   </div>
 </template>
 
@@ -43,6 +44,16 @@ export default {
       const targetIndex = this.tasks.findIndex(v => v.id === id);
       this.tasks.splice(targetIndex, 1);
       this.storeTask();
+    },
+
+    updateTask(data) { 
+      const id = data.id;
+      const item = data.item;
+      const targetIndex = this.tasks.findIndex(v => v.id === id);
+      const targetTask = this.tasks[targetIndex];
+      console.log('targetTask', targetTask);
+      this.tasks.splice(targetIndex, 1, { ...targetTask, item });
+      this.storeTask();
     }
   },
 
@@ -50,6 +61,7 @@ export default {
     this.tasks = localStorage.tasks ? JSON.parse(localStorage.tasks) : [];
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

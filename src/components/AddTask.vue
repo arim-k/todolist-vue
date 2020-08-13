@@ -4,7 +4,7 @@
       <fieldset>
         <div>
           <input type="text" v-model="item" placeholder="E.g. Go Home...">
-          <Button>등록하기</Button>
+          <Button @click="addTask">Get Todo</Button>
         </div>
       </fieldset>
     </form>
@@ -23,7 +23,7 @@ export default {
 
   data() {
     return {
-      item: [],
+      item: '',
     }
   },
 
